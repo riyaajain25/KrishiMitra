@@ -1,0 +1,76 @@
+/* Fullscreen background */
+.main-container {
+  height: 100vh;
+  width: 100%;
+  background: url("../assets/farmbg.jpg") no-repeat center center/cover;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Dark overlay at start */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.7);
+  animation: fadeOutOverlay 2s ease forwards;
+}
+
+/* Title styling */
+.title {
+  position: absolute;
+  top: 5%;
+  font-size: 5rem;
+  font-weight: bold;
+  color: rgb(80, 14, 15);
+  text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+  opacity: 0;
+  animation: fadeInTitle 2s ease forwards 2s; /* delay after overlay */
+}
+
+/* Buttons box */
+.button-box {
+  position: absolute;
+  bottom: 25%;
+  display: flex;
+  gap: 30px;
+  opacity: 0;
+  animation: fadeInButtons 2s ease forwards 4s; /* delay after title */
+}
+
+.btn {
+  padding: 15px 40px;
+  background: #ff9800;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #e67e00;
+}
+
+/* Animations */
+@keyframes fadeOutOverlay {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadeInTitle {
+  0% { opacity: 0; transform: translateY(-50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInButtons {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
