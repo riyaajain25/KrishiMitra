@@ -1,0 +1,12 @@
+Signup User
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "username": "riya",
+  "email": "riya@example.com",
+  "password": "mypassword"
+}
+
+### Get All Users
+GET http://localhost:8080/api/auth/users
