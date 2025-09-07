@@ -1,8 +1,8 @@
-/* Fullscreen background */
+/* Fullscreen background with GIF */
 .main-container {
   height: 100vh;
   width: 100%;
-  background: url("../assets/farmbg.jpg") no-repeat center center/cover;
+  background: url("../assets/farmmmm-ezgif.com-speed.gif") no-repeat center center/cover;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -11,52 +11,58 @@
   flex-direction: column;
 }
 
-/* Dark overlay at start */
+/* Dark overlay (soft to improve text visibility) */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.4); /* lighter than before for a natural look */
   animation: fadeOutOverlay 2s ease forwards;
 }
 
 /* Title styling */
 .title {
   position: absolute;
-  top: 5%;
-  font-size: 5rem;
+  top: 10%;
+  font-size: 4.5rem;
   font-weight: bold;
-  color: rgb(80, 14, 15);
-  text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+  color: #fffcfc; /* clean white for sky contrast */
+  text-align: center;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
   opacity: 0;
-  animation: fadeInTitle 2s ease forwards 2s; /* delay after overlay */
+  animation: fadeInTitle 2s ease forwards 2s; /* after overlay */
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Buttons box */
+/* Buttons container */
 .button-box {
   position: absolute;
-  bottom: 25%;
+  bottom: 20%;
   display: flex;
   gap: 30px;
   opacity: 0;
-  animation: fadeInButtons 2s ease forwards 4s; /* delay after title */
+  animation: fadeInButtons 2s ease forwards 4s; /* after title */
 }
 
+/* Button style */
 .btn {
-  padding: 15px 40px;
-  background: #ff9800;
-  color: white;
-  font-size: 1.5rem;
+  padding: 15px 50px;
+  background: linear-gradient(135deg, #43a047, #66bb6a); /* green gradient (farm theme) */
+  color: #fff;
+  font-size: 1.4rem;
   font-weight: bold;
-  border-radius: 12px;
+  border-radius: 30px;
   text-decoration: none;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .btn:hover {
-  background: #e67e00;
+  background: linear-gradient(135deg, #2e7d32, #388e3c);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
 /* Animations */
@@ -72,5 +78,5 @@
 
 @keyframes fadeInButtons {
   0% { opacity: 0; transform: translateY(50px); }
-  100% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 1; transform: translateY(0);}
 }
