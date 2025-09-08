@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
+import md5 from "crypto-js/md5"; // ✅ import MD5
 
 function Login() {
   const navigate = useNavigate();
 
-  // ✅ State for inputs and error messages
   const [username, setUsername] = useState(""); // backend expects username
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,7 +14,19 @@ function Login() {
     e.preventDefault();
     setError(""); // reset previous error
 
-    const user = { username, password };
+    // ✅ Password regex: min 6 chars, letters + numbers
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must be at least 6 characters and include both letters and numbers."
+      );
+      return;
+    }
+
+    // ✅ MD5 hash the password
+    const hashedPassword = md5(password).toString();
+
+    const user = { username, password: hashedPassword };
 
     try {
       const response = await fetch("http://localhost:8080/api/auth/login", {
@@ -26,11 +38,9 @@ function Login() {
       const message = await response.text();
 
       if (response.ok) {
-        // ✅ Successful login → navigate
-        alert(message); // optional, show "Login successful!"
+        alert(message); // optional
         navigate("/dashboard");
       } else {
-        // ❌ Login failed → show error
         setError(message);
       }
     } catch (err) {
@@ -63,7 +73,6 @@ function Login() {
           <button type="submit">Login</button>
         </form>
 
-        {/* ✅ Display error below the form */}
         {error && <p className="error-message">{error}</p>}
 
         <p className="switch-text">

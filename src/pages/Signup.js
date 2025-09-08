@@ -1,15 +1,30 @@
 import React, { useState } from "react";
 import "../styles/Signup.css";
+import md5 from "crypto-js/md5"; // ✅ import MD5
 
 function Signup() {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // ✅ error state
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setError(""); // reset previous error
 
-    const user = { username, email, password };
+    // ✅ Password regex: min 6 chars, letters + numbers
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must be at least 6 characters and include both letters and numbers."
+      );
+      return;
+    }
+
+    // ✅ MD5 hash the password
+    const hashedPassword = md5(password).toString();
+
+    const user = { username, email, password: hashedPassword };
 
     try {
       const response = await fetch("http://localhost:8080/api/auth/signup", {
@@ -59,6 +74,9 @@ function Signup() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          {/* ✅ show password error */}
+          {error && <p style={{ color: "red" }}>{error}</p>}
+
           <button type="submit">Signup</button>
         </form>
 
