@@ -1,17 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/About.css";
 
 // Import images from assets folder
 import medha from "../assets/medha.jpg";
 import nihar from "../assets/nihar.jpg";
 import riya from "../assets/riya.jpg";
+import logo from "../assets/logo.jpg"; // <- Logo import
 
 const teamMembers = [
   {
     role: "Frontend Designer",
     name: "MEDHA MANSI",
     description:
-      "Final-year Computer Science student at VIT Vellore,passionate about crafting intuitive and engaging user interfaces, with a focus on clean design and seamless user experiences.",
+      "Final-year Computer Science student at VIT Vellore, passionate about crafting intuitive and engaging user interfaces, with a focus on clean design and seamless user experiences.",
     imgSrc: medha,
     instaLink: "#",
     linkedinLink: "https://www.linkedin.com/in/medha-mansi-45633b276/",
@@ -20,7 +22,7 @@ const teamMembers = [
     role: "ML Engineer",
     name: "NIHAR THAPLIYAL",
     description:
-      "Final-year Computer Science student at VIT Vellore,exploring the power of machine learning to solve real-world problems with data-driven insights and intelligent models.",
+      "Final-year Computer Science student at VIT Vellore, exploring the power of machine learning to solve real-world problems with data-driven insights and intelligent models.",
     imgSrc: nihar,
     instaLink: "#",
     linkedinLink: "#",
@@ -29,7 +31,7 @@ const teamMembers = [
     role: "Backend Designer",
     name: "RIYA JAIN",
     description:
-      "Final-year Computer Science student at VIT Vellore,building robust and scalable backend systems to ensure smooth functionality and reliable performance of applications.",
+      "Final-year Computer Science student at VIT Vellore, building robust and scalable backend systems to ensure smooth functionality and reliable performance of applications.",
     imgSrc: riya,
     instaLink: "#",
     linkedinLink: "https://www.linkedin.com/in/riya-jain-6a6805321/",
@@ -38,24 +40,56 @@ const teamMembers = [
 
 const About = () => {
   return (
-    <section className="about-section">
+    <section className="about-page">
+      {/* ✅ Navbar with logo */}
+      <nav className="navbar">
+        <div className="logo-section" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <img src={logo} alt="KrishiMitra Logo" className="logo-image" style={{ width: 50, height: 50 }} />
+          <div className="logo">KRISHIMITRA</div>
+        </div>
+
+        <ul>
+                    <li><Link to="/dashboard">Home</Link></li>
+                    <li><Link to="/crop-prediction">Crop Prediction</Link></li>
+                    <li><Link to="/financial-status">Finance Planner</Link></li>
+                               
+                                <li><Link to="/schemes">Schemes</Link></li>
+                    
+                    <li><Link to="/about">About</Link></li> {/* ✅ About link */}
+        
+                  </ul>
+      </nav>
+
+      {/* ✅ About Section */}
       <div className="about-container">
-        {teamMembers.map(({ role, name, description, imgSrc, instaLink, linkedinLink }) => (
-          <div className="team-member" key={name}>
-            <img src={imgSrc} alt={name} className="profile-pic" />
-            <p className="role">{role}</p>
-            <h3 className="name">{name}</h3>
-            <p className="description">{description}</p>
-            <div className="social-icons">
-              <a href={instaLink} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href={linkedinLink} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
+        {teamMembers.map(
+          ({ role, name, description, imgSrc, instaLink, linkedinLink }) => (
+            <div className="team-member" key={name}>
+              <img src={imgSrc} alt={name} className="profile-pic" />
+              <p className="role">{role}</p>
+              <h3 className="name">{name}</h3>
+              <p className="description">{description}</p>
+              <div className="social-icons">
+                <a
+                  href={instaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a
+                  href={linkedinLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
     </section>
   );

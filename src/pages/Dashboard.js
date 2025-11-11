@@ -34,8 +34,12 @@ function Dashboard() {
           <ul>
             <li><Link to="/dashboard">Home</Link></li>
             <li><Link to="/crop-prediction">Crop Prediction</Link></li>
-            <li><Link to="/financial-status">Financial Status</Link></li>
+            <li><Link to="/financial-status">Finance Planner</Link></li>
+                       
+                        <li><Link to="/schemes">Schemes</Link></li>
+            
             <li><Link to="/about">About</Link></li> {/* ✅ About link */}
+
           </ul>
         </nav>
       </div>
@@ -63,7 +67,7 @@ function Dashboard() {
           {/* Fixed Quote Box */}
           <div className="text-box quote-box">
             <h2>
-              "The farmer is the only man in our economy who buys everything at retail, 
+              "The farmer is the only man in our economy who buys everything at retail,
               sells everything at wholesale, and pays the freight both ways." 🌱
             </h2>
           </div>

@@ -1,0 +1,132 @@
+/* Full page layout with navbar on top */
+.schemes-fullscreen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #b7e3f0, #dff5d8, #fff3b0);
+  font-family: "Segoe UI", sans-serif;
+  overflow: hidden;
+}
+
+/* Below navbar content (image left, boxes right) */
+.schemes-wrapper {
+  flex: 1;
+  display: flex;
+  height: calc(100vh - 90px); /* minus navbar height */
+}
+
+/* Left side full image */
+.schemes-left {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.farmer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Right side schemes list */
+.schemes-right {
+  flex: 1.2;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #2c3e50;
+  overflow-y: auto;
+}
+
+/* Heading */
+.schemes-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #1a3c34;
+  text-align: left;
+}
+
+/* Scheme boxes container */
+.schemes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+}
+
+/* Each scheme box */
+.scheme-box {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+/* Title */
+.scheme-box h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #145a32;
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Description hidden initially */
+.scheme-box p {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 10px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* Hover effects */
+.scheme-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.scheme-box:hover p {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.scheme-box:hover h3 {
+  opacity: 0.95;
+}
+
+/* Scrollbar styling for right section */
+.schemes-right::-webkit-scrollbar {
+  width: 8px;
+}
+
+.schemes-right::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .schemes-wrapper {
+    flex-direction: column;
+  }
+
+  .schemes-left {
+    height: 40vh;
+  }
+
+  .schemes-right {
+    padding: 30px;
+  }
+}
