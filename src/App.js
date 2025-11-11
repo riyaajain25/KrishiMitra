@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import About from "./pages/About";
 import FinancePlanner from "./pages/FinancePlanner"; // ✅ import added
 import Schemes from "./pages/Schemes";
-
+import CropPredictionPage from './pages/CropPredictionPage';
 function App() {
   return (
     <Router>
@@ -16,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/crop-prediction" element={<CropPredictionPage />}/>
         <Route path="/about" element={<About />} />
         <Route path="/financial-status" element={<FinancePlanner />} /> {/* ✅ Added this */}
         <Route path="/schemes" element={<Schemes />} />
